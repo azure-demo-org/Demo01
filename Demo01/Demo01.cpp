@@ -1,11 +1,14 @@
 // Demo01.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
 int main()
 {
     std::cout << "Hello World!\n";
+    char a[4];
+    strcpy(a, "test");
+    printf("%s\n", a[5]);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
