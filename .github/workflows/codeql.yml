@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       actions: read
       contents: read
@@ -69,7 +69,12 @@ jobs:
     # - run: |
     #   echo "Run, Build Application using script"
     #   ./location_of_script_within_repo/buildscript.sh
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
 
+    - name: Build app for release
+      run: msbuild $env:BUILD_PATH -t:rebuild -verbosity:diag -property:Configuration=Release
+      
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
